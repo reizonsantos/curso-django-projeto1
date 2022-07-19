@@ -5,6 +5,9 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=75)
 
+    def __str__(self):
+        return self.name
+
 
 class Recipe(models.Model):
     title = models.CharField(max_length=65)
@@ -24,3 +27,6 @@ class Recipe(models.Model):
         Category, on_delete=models.SET_NULL, null=True)
     user = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.title
